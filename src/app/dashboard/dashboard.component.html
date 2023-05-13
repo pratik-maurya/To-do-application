@@ -1,0 +1,78 @@
+<div class="container-fluid bg-light">
+  <div class="container bg-light">
+
+    <div class="row mt-4" style="height: 500px;">
+      <div class="col"></div>
+      <div class="col-md-6 bg-white shadow" style="border-radius: 10px;">
+
+        <div class="card mt-4" style=" background: rgb(2,0,36);
+              background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);">
+          <h4 class="text-white p-3 pt-2 pb-2">To Do Application</h4>
+        </div>
+
+        <div class="shadow">
+          <div class="input-group p-4">
+            <input type="text" class="form-control" placeholder="Enter task " name="task" [(ngModel)]="addTaskValue">
+            <button class="btn" type="button" (click)="addTask()"><img src="./assets/img/add.png"
+                style="width: 25px;height: auto;"></button>
+          </div>
+        </div>
+        <div
+          style="background: rgb(2,0,36);
+background: linear-gradient(203deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); border-radius: 8px;margin: 16px;">
+          <h4 class="mt-4 text-white" style="padding: 6px; text-align: center;" *ngIf="taskArr.length>0">TASKS </h4>
+        </div>
+
+        <div style="overflow-y: auto; height: 350px; ">
+          <div class="m-3" *ngFor="let task of taskArr">
+            <div class="p-2 shadow border" id="tasks"
+              style="background: rgb(2,0,36);
+            background: linear-gradient(203deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);border-radius: 15px;">
+              <div class="row input-group row ps-3">
+                <div class="card col-9 border-0"> {{task.task_name}} </div>
+                <div class="col-1">
+                  <button class="btn me-2" data-bs-toggle="modal" type="button" style="margin-left: -21px;"
+                    data-bs-target="#exampleModal" (click)="call(task)">
+                    <img src="./assets/img/edit.png" style="width: 25px;height: auto;">
+                  </button>
+                </div>
+                <div class="btn col-2" (click)="deleteTask(task)">
+                  <img src="./assets/img/delete.png" style="width: 25px;height: auto;">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="taskArr.length<=0" style="text-align: center;">
+            <img src="./assets/img/empty.png" >
+            <p>Empty</p>
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Task</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <div class="input-group p-3"
+                  style="background: rgb(2,0,36);
+                background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);border-radius: 25px;">
+                  <input type="text" class="form-control" placeholder="Enter task " name="task"
+                    [(ngModel)]="editTaskValue">
+                  <button class="btn" type="button" data-bs-dismiss="modal" (click)="editTask()"><img
+                      src="./assets/img/update.png" style="width: 25px;height: auto;"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="col"></div>
+
+    </div>
+
+  </div>
+</div>
